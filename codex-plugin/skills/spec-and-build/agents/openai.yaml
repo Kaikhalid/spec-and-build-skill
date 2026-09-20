@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec and Build"
+  short_description: "Architect and implement significant codebase changes"
+  default_prompt: "Use $spec-and-build to architect a significant codebase change, write the phased spec, and stop at the approval gate."

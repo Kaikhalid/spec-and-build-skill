@@ -1,0 +1,25 @@
+{
+  "name": "spec-and-build",
+  "version": "4.1.0+codex.20260730045227",
+  "description": "Evidence-led architecture, phased specifications, approval gates, and implementation for significant codebase changes.",
+  "author": {
+    "name": "Kai"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Spec and Build",
+    "shortDescription": "Architect and implement significant code changes.",
+    "longDescription": "Deep-read a codebase, argue the architecture, write a phased development specification, stop at an approval gate, and implement each authorized phase with evidence-backed validation.",
+    "developerName": "Kai",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use $spec-and-build to architect this change.",
+      "Write a phased dev spec and stop for approval.",
+      "Implement the approved spec end-to-end."
+    ]
+  }
+}
