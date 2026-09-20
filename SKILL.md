@@ -1,5 +1,5 @@
 ---
-name: spec_and_build
+name: spec-and-build
 version: "4.1"
 description: >
   End-to-end workflow for planning and implementing any significant codebase change.
@@ -15,9 +15,9 @@ description: >
   structured approach prevents phantom bugs and incomplete implementations.
 ---
 
-# spec_and_build — Architectural Spec and Phased Build
+# spec-and-build — Architectural Spec and Phased Build
 
-**Invocation:** `/spec_and_build <short problem statement>`
+**Invocation:** `/spec-and-build <short problem statement>`
 
 A six-stage workflow that separates thinking from building. The core invariant: **never conflate planning and implementation.** If the user says "write a spec" or "develop a plan", deliver the spec and stop. Only build when explicitly told to proceed.
 
@@ -378,8 +378,6 @@ When a sub-task must be delegated, the brief must include:
 
 Never write: "based on your findings, fix the bug." Always write: "in `/absolute/path/to/file` near line N, replace `OLD` with `NEW`, then run `[verification command]` to confirm."
 
-> For debugging persistence failures, integration mismatches, or layered system failures encountered during implementation, invoke `investigator_SKILL.md`. For general phantom behaviour (unexpected gate firing, bypass paths, conditional evaluation errors), apply RCA chain rule and enumeration rule — these warrant their own dedicated skill.
-
 ---
 
 ## Quick Reference
@@ -400,7 +398,7 @@ Never write: "based on your findings, fix the bug." Always write: "in `/absolute
 **Invocation:**
 
 ```
-/spec_and_build Add rate limiting to the public API — unauthenticated endpoints are being abused
+/spec-and-build Add rate limiting to the public API — unauthenticated endpoints are being abused
 ```
 
 **Expected output sequence:**
@@ -418,4 +416,4 @@ Never write: "based on your findings, fix the bug." Always write: "in `/absolute
 ---
 
 *Skill v4.1 — tightened from v4.0.*
-*Changes: removed 'How to use this skill' preamble (superseded by quick reference table); removed Python/TypeScript test boilerplate (Claude Code knows these frameworks); extracted RCA/debugging principles to `debug_SKILL.md` reference; service restart rule updated to necessity-based trigger.*
+*Changes: removed 'How to use this skill' preamble (superseded by quick reference table); removed Python/TypeScript test boilerplate (Claude Code knows these frameworks); service restart rule updated to necessity-based trigger.*

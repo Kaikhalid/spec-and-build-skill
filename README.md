@@ -17,7 +17,7 @@ Use it for changes that touch more than two files or alter a gate, a permission,
 
 | Path | For | Notes |
 |---|---|---|
-| `SKILL.md` | Claude | Invoked as `/spec_and_build <problem statement>`. |
+| `SKILL.md` | Claude | Invoked as `/spec-and-build <problem statement>`. |
 | `codex-plugin/` | Codex | A Codex plugin: manifest in `.codex-plugin/plugin.json`, skill in `skills/spec-and-build/`. |
 
 The two share the same six stages. The Codex version is a separate rewrite. It reads `AGENTS.md` first, edits through `apply_patch`, and adds failure-path and rollback sections to the spec.
@@ -38,10 +38,6 @@ cp -R codex-plugin/skills/spec-and-build ~/.codex/skills/
 ```
 
 I have not tested the Codex copy install from a clean machine. To install it as a full plugin, add `codex-plugin/` to a Codex plugin marketplace. This repo does not include a marketplace file.
-
-## Known gaps
-
-The Claude version mentions `investigator_SKILL.md` and `debug_SKILL.md` for debugging guidance. Those files are not in this repo.
 
 ## Licence
 
