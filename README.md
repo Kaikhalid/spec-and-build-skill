@@ -1,26 +1,28 @@
 # spec-and-build
 
-A skill for AI coding agents that separates planning from building. You give it a significant codebase change. It reads the system, argues the design, writes a phased spec, and stops. It writes code only after you approve.
+A skill for AI coding agents that separates planning from building. You give it a significant codebase change. It reads the system, argues the design, writes a self-contained phased spec, and stops. Code is written only after you approve, and by an operator that checks the spec against the live code first.
 
 Use it for changes that touch more than two files or alter a gate, a permission, persisted state or a data model: new cross-file features, refactors, security hardening, migrations and external-service integrations.
 
-## The six stages
+## How it works
 
-1. **Deep read.** Find every touch point, caller, test and affected path before forming an opinion.
-2. **The argument.** Make the strongest case for the current design, the strongest case against it, then state a middle way and the one invariant that must hold before and after.
-3. **The dev spec.** Write a phased Markdown spec. Each change carries the exact old text, the exact new text, a verification command and a test that fails before and passes after.
-4. **Approval gate.** Stop. A request for a plan is not permission to change code.
-5. **Implementation.** Build one phase at a time. A phase does not start until the previous validation gate passes.
-6. **Completion report.** List the phases delivered, test results, files changed, what was removed and added, and the invariants confirmed.
+The skill has two roles. An **orchestrator** reads the system and writes the spec. An **operator** checks the spec against the live code, builds it and reports. One agent can fill both roles in two phases, or two different models can.
+
+1. **North Star.** State what the change must achieve, for whom, and how anyone can tell. Every later decision traces back to it.
+2. **Read.** Find the touch points, callers and tests. Capture what the operator cannot get from the code. Do not try out the plan.
+3. **The argument.** Make the strongest case for the current design, the strongest case against it, then state a middle way and the one invariant that must hold before and after.
+4. **The spec.** Write a self-contained phased spec. It carries its own Operator Charter, so it works without this skill. Each phase has an Outcome, acceptance checks, a test contract and a rollback.
+5. **Approval stop.** Every run stops here. Building starts only on the user's explicit go-ahead, and the spec's Status line records it.
+6. **Implementation.** The operator verifies the spec against the code first, then builds one phase at a time. A three-question test decides when a deviation is safe to make without asking. Only five listed Blockers stop the work.
+
+The spec is a guidepost, not hard truth. Locked items (the North Star, Outcomes, invariants, locked decisions and the no-go list) never change. Claims about the code give way to the live code. Suggestions can be changed freely.
 
 ## Two versions
 
 | Path | For | Notes |
 |---|---|---|
-| `SKILL.md` | Claude | Invoked as `/spec-and-build <problem statement>`. |
-| `codex-plugin/` | Codex | A Codex plugin: manifest in `.codex-plugin/plugin.json`, skill in `skills/spec-and-build/`. |
-
-The two share the same six stages. The Codex version is a separate rewrite. It reads `AGENTS.md` first, edits through `apply_patch`, and adds failure-path and rollback sections to the spec.
+| `SKILL.md` | Claude | v5.0. Invoked as `/spec-and-build <problem statement>`. |
+| `codex-plugin/` | Codex | A Codex plugin: manifest in `.codex-plugin/plugin.json`, skill in `skills/spec-and-build/`. Still at v4.1. It follows the older six-stage flow (deep read, argument, dev spec, approval gate, implementation, completion report) and has not been updated to v5.0. |
 
 ## Install
 
